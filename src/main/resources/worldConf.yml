@@ -1,9 +1,10 @@
 worldName: TerraInfinity
-date: 2019-04-17
 sizeX: 10
 sizeY: 20
 worldEntity:
-  - configFile: wolf.yml
-    entityType: predators
-  - configFile: oak.yml
+  - configFile: "animals/wolf.yml"
+    entityType: predator
+  - configFile: "animals/sheep.yml"
+    entityType: herbivore
+  - configFile: "plants/oak.yml"
     entityType: plant
