@@ -1,21 +1,21 @@
-package org.dk.plant;
+package org.dk.nature.plant;
 
-import org.dk.action.LivingEntity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.dk.environment.Position;
-import org.dk.action.Reproducible;
+import org.dk.nature.Natures;
 
-public abstract class Plants implements LivingEntity, Reproducible {
+
+@AllArgsConstructor
+@NoArgsConstructor
+@SuperBuilder
+public abstract class Plants extends Natures {
     protected String name;
     protected int age;
     protected Position position;
     protected double size;
 
-    public Plants(String name, int age, Position position) {
-        this.name = name;
-        this.age = age;
-        this.position = position;
-        this.size = 1.0;
-    }
 
     @Override
     public String getName() {
