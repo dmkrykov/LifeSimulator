@@ -2,14 +2,14 @@ package org.dk.nature.plant;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.ToString;
 import org.dk.environment.Position;
 import org.dk.nature.Natures;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@ToString(callSuper = true)
 public abstract class Plants extends Natures {
     protected String name;
     protected int age;

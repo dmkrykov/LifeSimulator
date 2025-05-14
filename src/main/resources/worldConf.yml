@@ -1,10 +1,22 @@
 worldName: TerraInfinity
 sizeX: 10
 sizeY: 20
-worldEntity:
-  - configFile: "animals/wolf.yml"
+entity:
+  - name: WolfGray
     entityType: predator
-  - configFile: "animals/sheep.yml"
+    count: 10
+    maxCountInMap: 30
+    age: [1,10]
+    icon: 🐺
+  - name: Sheep
+    count: 20
     entityType: herbivore
-  - configFile: "plants/oak.yml"
+    maxCountInMap: 30
+    age: [1,8]
+    icon: 🐏
+  - name: OakGreen
+    count: 40
     entityType: plant
+    maxCountInMap: 42
+    age: [1,500]
+    icon: 🌳

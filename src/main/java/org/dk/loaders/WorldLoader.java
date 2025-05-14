@@ -9,6 +9,6 @@ public class WorldLoader {
 	private String worldName;
 	private int sizeX;
 	private int sizeY;
-	private List<Entity> worldEntity;
+	private List<Entity> entity;
 
 }

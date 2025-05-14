@@ -1,23 +1,18 @@
 package org.dk.nature.animal;
 
+
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.dk.action.LivingEntity;
 import org.dk.environment.Position;
-import org.dk.loaders.Entity;
 
-
+@EqualsAndHashCode(callSuper = true)
+@Data
 @AllArgsConstructor
 @ToString(callSuper = true)
-public class PredatorDefault extends Predators{
-    public PredatorDefault(Entity entity) {
-        name = entity.getName();
-        age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
-        icon = entity.getIcon();
-        setSpeed(entity.getSpeed());
-        System.out.println(this);
-    }
-
+public abstract class Herbivore extends Animals{
     @Override
     public void makeSound() {
 
@@ -35,7 +30,7 @@ public class PredatorDefault extends Predators{
 
     @Override
     public void live() {
-        System.out.println("I'm living!");
+
     }
 
     @Override

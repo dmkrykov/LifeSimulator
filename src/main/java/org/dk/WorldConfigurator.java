@@ -7,15 +7,15 @@ import lombok.Getter;
 import org.dk.action.WorldSim;
 import org.dk.environment.Position;
 import org.dk.exception.LoadResource;
-import org.dk.loaders.Predator;
 import org.dk.loaders.WorldLoader;
 import org.dk.nature.Natures;
-import org.dk.nature.animal.PredatorDefault;
-import org.dk.nature.plant.Tree;
+import org.dk.service.EntityGenerator;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Getter
@@ -46,42 +46,8 @@ public class WorldConfigurator implements WorldSim {
         position.setX(worldLoader.getSizeX());
         position.setY(worldLoader.getSizeY());
 
-        worldLoader.getWorldEntity().forEach(e -> {
-            Optional<URL> entityConfUrl = Optional.ofNullable(WorldConfigurator.class.getClassLoader().getResource(e.getConfigFile()));
-            if (entityConfUrl.isEmpty()) {
-                throw new LoadResource("Configuration file " + e.getConfigFile() + " does not exist");
-            }
-
-            try (InputStream in = entityConfUrl.get().openStream()) {
-                Predator entity = mapper.readValue(in, Predator.class);
-                switch (e.getEntityType()) {
-                    case "predator" -> {
-                        Natures animal = PredatorDefault
-                                .builder()
-                                .speed(10)
-                                .age(entity.getAge())
-                                .name(entity.getName())
-                                .icon(entity.getIcon())
-                                .build();
-
-                        System.out.println(animal.getIcon() + animal.getName());
-                    }
-                    case "plant" -> {
-                        Natures animal = Tree
-                                .builder()
-                                .age(entity.getAge())
-                                .name(entity.getName())
-                                .icon(entity.getIcon())
-                                .build();
-                        System.out.println(animal.getIcon() + animal.getName());
-                    }
-                }
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
-        System.out.println(worldLoader);
+        EntityGenerator entityGenerator = new EntityGenerator();
+        Map<String, List<Natures>> naturesMap = entityGenerator.generateNatures(worldLoader.getEntity());
 
     }
 }

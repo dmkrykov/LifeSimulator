@@ -1,16 +1,12 @@
 package org.dk.nature.animal;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+@ToString(callSuper = true)
 public abstract class Predators extends Animals {
     private double speed;
 
