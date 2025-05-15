@@ -9,7 +9,7 @@ import org.dk.action.Reproducible;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Natures implements LivingEntity, Reproducible {
+public abstract class Natures implements LivingEntity, Reproducible, Runnable {
     protected String name;
     protected String icon;
     protected int age;

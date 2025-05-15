@@ -52,4 +52,9 @@ public class PredatorDefault extends Predators{
     public Position getPosition() {
         return null;
     }
+
+    @Override
+    public void run() {
+
+    }
 }

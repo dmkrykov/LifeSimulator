@@ -14,6 +14,7 @@ public class Tree extends Plants{
         name = entity.getName();
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
         icon = entity.getIcon();
+        group = entity.isGroup();
         System.out.println(this);
     }
 
@@ -30,5 +31,10 @@ public class Tree extends Plants{
     @Override
     public LivingEntity reproduce() {
         return null;
+    }
+
+    @Override
+    public void run() {
+
     }
 }

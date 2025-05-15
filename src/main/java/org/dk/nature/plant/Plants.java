@@ -15,6 +15,7 @@ public abstract class Plants extends Natures {
     protected int age;
     protected Position position;
     protected double size;
+    protected boolean group;
 
 
     @Override

@@ -3,20 +3,56 @@ sizeX: 10
 sizeY: 20
 entity:
   - name: WolfGray
+    icon: 🐺
     entityType: predator
     count: 10
-    maxCountInMap: 30
+    maxCountInMap: 150
     age: [1,10]
-    icon: 🐺
+    stepByStep: 3
+    maxFood: 8
+    weight: 50
+    maxTypeCell: 30
+    canEat:
+      - ["rabbit", "60"]
+      - ["mouse", "80"]
+      - ["sheep", "70"]
   - name: Sheep
-    count: 20
+    icon: 🐑
     entityType: herbivore
+    count: 20
     maxCountInMap: 30
     age: [1,8]
-    icon: 🐏
+    stepByStep: 3
+    maxFood: 8
+    weight: 50
+    maxTypeCell: 30
+    canEat:
+      - [ "plant", "100" ]
+  - name: Rabbit
+    icon: 🐇
+    entityType: herbivore
+    count: 30
+    maxCountInMap: 500
+    age: [ 1,5 ]
+    stepByStep: 2
+    maxFood: 0.45
+    weight: 2
+    maxTypeCell: 150
+    canEat:
+    - [ "plant", "100" ]
   - name: OakGreen
-    count: 40
+    icon: 🌳
     entityType: plant
+    group: true
+    count: 40
     maxCountInMap: 42
     age: [1,500]
-    icon: 🌳
+    maxTypeCell: 30
+  - name: Grass
+    icon: 🌱
+    entityType: plant
+    group: true
+    count: 100
+    maxCountInMap: 1000
+    age: [ 1,10 ]
+    maxTypeCell: 30
