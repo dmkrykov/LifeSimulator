@@ -15,7 +15,6 @@ public class PredatorDefault extends Predators{
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
         icon = entity.getIcon();
         setSpeed(entity.getSpeed());
-        System.out.println(this);
     }
 
     @Override

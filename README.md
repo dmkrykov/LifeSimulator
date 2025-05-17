@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache_2.0-blue)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 [![Version](https://img.shields.io/badge/version-0.1-green)](https://github.com/dmkrykov/LifeSimulator )
+[![Java CI with Maven](https://github.com/dmkrykov/LifeSimulator/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/dmkrykov/LifeSimulator/actions/workflows/maven.yml)
 
 
 ### Life Simulator application in a small world
@@ -13,7 +14,10 @@ ___
 
 ## 🚀 Key futures
 
-- in work
+- Generation of a large number of entities
+- Grouping of entities by type relative to the base position on the map
+- Random distribution of entities on the map
+- Random distribution of map landscape elements
 
 ---
 

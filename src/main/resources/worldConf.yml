@@ -5,7 +5,7 @@ entity:
   - name: WolfGray
     icon: 🐺
     entityType: predator
-    count: 10
+    count: 5
     maxCountInMap: 150
     age: [1,10]
     stepByStep: 3
@@ -19,7 +19,7 @@ entity:
   - name: Sheep
     icon: 🐑
     entityType: herbivore
-    count: 20
+    count: 5
     maxCountInMap: 30
     age: [1,8]
     stepByStep: 3
@@ -31,7 +31,7 @@ entity:
   - name: Rabbit
     icon: 🐇
     entityType: herbivore
-    count: 30
+    count: 10
     maxCountInMap: 500
     age: [ 1,5 ]
     stepByStep: 2
@@ -44,7 +44,7 @@ entity:
     icon: 🌳
     entityType: plant
     group: true
-    count: 40
+    count: 120
     maxCountInMap: 42
     age: [1,500]
     maxTypeCell: 30
@@ -52,7 +52,7 @@ entity:
     icon: 🌱
     entityType: plant
     group: true
-    count: 100
+    count: 10000
     maxCountInMap: 1000
     age: [ 1,10 ]
     maxTypeCell: 30

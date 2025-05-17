@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public abstract class Predators extends Animals {
-    private double speed;
+    protected double speed;
 
     @Override
     public void live() {

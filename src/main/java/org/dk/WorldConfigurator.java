@@ -20,14 +20,16 @@ import java.util.Optional;
 
 @Getter
 public class WorldConfigurator implements WorldSim {
-    private final String CONFIG_FILE = "worldConf.yml";
+    protected final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
+    protected final String name;
+    protected final WorldLoader worldLoader;
 
-    private final String name;
-    private final WorldLoader worldLoader;
+    private final String CONFIG_FILE = "worldConf.yml";
     private final Position position = new Position(0, 0);
+    private final Map<String, List<Natures>> naturesMap;
+
 
     public WorldConfigurator() {
-
         Optional<URL> url = Optional.ofNullable(WorldConfigurator.class.getClassLoader().getResource(CONFIG_FILE));
         if (url.isEmpty()) {
             throw new LoadResource("Configuration file " + CONFIG_FILE + " does not exist");
@@ -46,8 +48,9 @@ public class WorldConfigurator implements WorldSim {
         position.setX(worldLoader.getSizeX());
         position.setY(worldLoader.getSizeY());
 
-        EntityGenerator entityGenerator = new EntityGenerator();
-        Map<String, List<Natures>> naturesMap = entityGenerator.generateNatures(worldLoader.getEntity());
+        EntityGenerator entityGenerator = new EntityGenerator(worldLoader);
+        naturesMap = entityGenerator.generateNatures(worldLoader.getEntity());
+
 
     }
 }
