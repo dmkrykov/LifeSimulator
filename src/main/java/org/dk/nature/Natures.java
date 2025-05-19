@@ -17,4 +17,6 @@ public abstract class Natures implements LivingEntity, Reproducible, Runnable {
     protected int age;
     protected Position startPosition;
     protected Integer countInFlock;
+    protected double energy;
+    protected int stepByStep;
 }

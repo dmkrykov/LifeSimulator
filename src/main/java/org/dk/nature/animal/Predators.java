@@ -5,10 +5,8 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString(callSuper = true)
 public abstract class Predators extends Animals {
-    protected double speed;
 
     @Override
     public void live() {

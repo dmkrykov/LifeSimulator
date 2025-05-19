@@ -15,6 +15,7 @@ public class Tree extends Plants{
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
         icon = entity.getIcon();
         group = entity.isGroup();
+        energy = entity.getEnergy();
     }
 
     @Override

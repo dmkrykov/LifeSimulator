@@ -11,22 +11,10 @@ import org.dk.nature.Natures;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public abstract class Plants extends Natures {
-    protected String name;
-    protected int age;
     protected Position position;
     protected double size;
     protected boolean group;
 
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public int getAge() {
-        return age;
-    }
 
     @Override
     public Position getPosition() {

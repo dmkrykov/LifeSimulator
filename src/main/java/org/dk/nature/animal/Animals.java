@@ -13,7 +13,6 @@ import org.dk.nature.Natures;
 @NoArgsConstructor
 @ToString(callSuper = true)
 public abstract class Animals extends Natures implements Feedable, Movable {
-    protected double energy;
     protected Position position;
 
     @Override

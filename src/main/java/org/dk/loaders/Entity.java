@@ -10,7 +10,6 @@ public class Entity {
 	private String entityType;
 	private int maxCountInMap;
 	private int[] age;
-	private int speed; //no use
 	private int count;
 	private String icon;
 	private float weight;
@@ -18,5 +17,6 @@ public class Entity {
 	private int stepByStep;
 	private float maxFood;
 	private boolean group;
+	private double energy;
 	private List<CanEat> canEat;
 }

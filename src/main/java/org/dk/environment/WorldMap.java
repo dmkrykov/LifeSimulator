@@ -20,14 +20,30 @@ public class WorldMap {
         cells = new Cell[worldConfigurator.getPosition().getX()][worldConfigurator.getPosition().getY()];
         initialize();
 
-        System.out.println(Arrays.deepToString(cells));
     }
 
+    /**
+     * Initialize method natures on map cells
+     */
     private void initialize() {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 Set<Map<String, List<Natures>>> natures = new HashSet<>();
-                natures.add(worldConfigurator.getNaturesMap());
+                int finalI = i;
+                int finalJ = j;
+                worldConfigurator.getNaturesMap().forEach((k, v) -> {
+                    List<Natures> temp = new ArrayList<>();
+                    v.forEach(n -> {
+                        if (n.getStartPosition().getX() == finalI && n.getStartPosition().getY() == finalJ) {
+                            temp.add(n);
+                        }
+                    });
+                    if (!temp.isEmpty()) {
+                        Map<String, List<Natures>> mapToAdd = new HashMap<>();
+                        mapToAdd.put(k, temp);
+                        natures.add(mapToAdd);
+                    }
+                });
                 cells[i][j] = new Cell(getAvailableTerrain(), getAvailableDirections(i, j), natures);
             }
         }

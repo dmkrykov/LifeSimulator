@@ -50,7 +50,5 @@ public class WorldConfigurator implements WorldSim {
 
         EntityGenerator entityGenerator = new EntityGenerator(worldLoader);
         naturesMap = entityGenerator.generateNatures(worldLoader.getEntity());
-
-
     }
 }

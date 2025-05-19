@@ -1,6 +1,7 @@
 package org.dk.nature.animal;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.dk.action.LivingEntity;
 import org.dk.environment.Position;
@@ -14,7 +15,8 @@ public class PredatorDefault extends Predators{
         name = entity.getName();
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
         icon = entity.getIcon();
-        setSpeed(entity.getSpeed());
+        energy = entity.getEnergy();
+        stepByStep = entity.getStepByStep();
     }
 
     @Override
