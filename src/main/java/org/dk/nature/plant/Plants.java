@@ -13,7 +13,6 @@ import org.dk.nature.Natures;
 public abstract class Plants extends Natures {
     protected Position position;
     protected double size;
-    protected boolean group;
 
 
     @Override

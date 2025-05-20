@@ -19,4 +19,5 @@ public abstract class Natures implements LivingEntity, Reproducible, Runnable {
     protected Integer countInFlock;
     protected double energy;
     protected int stepByStep;
+    protected boolean group;
 }

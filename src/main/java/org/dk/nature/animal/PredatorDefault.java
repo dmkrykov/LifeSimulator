@@ -31,7 +31,7 @@ public class PredatorDefault extends Predators{
 
     @Override
     public double getEnergy() {
-        return 0;
+        return energy;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class PredatorDefault extends Predators{
 
     @Override
     public void setPosition(Position position) {
-
+        this.position = position;
     }
 
     @Override
