@@ -30,11 +30,14 @@ public class ViewConsole implements View<String> {
                             v.forEach(n -> {
                                 if (countNatures.containsKey(n.getIcon())) {
                                     Integer current = countNatures.get(n.getIcon());
-                                    current++;
-                                    current+=n.getCountInFlock();
+                                    if (n.isGroup()) {
+                                        current += n.getCountInFlock();
+                                    }else{
+                                        current ++;
+                                    }
                                     countNatures.put(n.getIcon(), current);
                                 } else {
-                                    countNatures.put(n.getIcon(), 1);
+                                    countNatures.put(n.getIcon(), n.isGroup() ? n.getCountInFlock() : Integer.valueOf(1));
                                 }
                             });
                         });

@@ -5,7 +5,7 @@ entity:
   - name: WolfGray
     icon: 🐺
     entityType: predator
-    group: false
+    group: true
     count: 50
     maxCountInMap: 150
     age: [1,10]
@@ -21,7 +21,7 @@ entity:
   - name: Sheep
     icon: 🐑
     entityType: herbivore
-    group: false
+    group: true
     count: 50
     maxCountInMap: 30
     age: [1,8]
@@ -35,7 +35,7 @@ entity:
   - name: Rabbit
     icon: 🐇
     entityType: herbivore
-    group: false
+    group: true
     count: 100
     maxCountInMap: 500
     age: [ 1,5 ]
@@ -49,22 +49,24 @@ entity:
   - name: OakGreen
     icon: 🌳
     entityType: plant
-    group: false
+    group: true
     count: 120
     maxCountInMap: 42
     age: [1,500]
     maxTypeCell: 30
     energy: 100
     canEat:
-      - [ "sun", "rain" ]
+      - [ "sun", "80" ]
+      - [ "rain", "20" ]
   - name: Grass
     icon: 🌱
     entityType: plant
-    group: false
-    count: 10000
+    group: true
+    count: 1000
     maxCountInMap: 1000
     age: [ 1,10 ]
     maxTypeCell: 30
     energy: 100
     canEat:
-      - [ "sun", "rain" ]
+      - [ "sun", "70" ]
+      - [ "rain", "30" ]

@@ -15,6 +15,7 @@ public class PredatorDefault extends Predators{
         name = entity.getName();
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
         icon = entity.getIcon();
+        group = entity.isGroup();
         energy = entity.getEnergy();
         stepByStep = entity.getStepByStep();
     }

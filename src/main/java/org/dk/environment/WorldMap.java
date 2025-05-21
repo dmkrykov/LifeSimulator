@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.ToString;
 import org.dk.WorldConfigurator;
 import org.dk.nature.Natures;
+import org.dk.nature.animal.Animals;
 
 import java.util.*;
 
@@ -34,7 +35,7 @@ public class WorldMap {
                 worldConfigurator.getNaturesMap().forEach((k, v) -> {
                     List<Natures> temp = new ArrayList<>();
                     v.forEach(n -> {
-                        if (n.getStartPosition().getX() == finalI && n.getStartPosition().getY() == finalJ) {
+                        if (n.getCurrentPosition().getX() == finalI && n.getCurrentPosition().getY() == finalJ) {
                             temp.add(n);
                         }
                     });
@@ -82,5 +83,48 @@ public class WorldMap {
 
         Random rand = new Random();
         return weightedTerrains.get(rand.nextInt(weightedTerrains.size()));
+    }
+
+    public void setMove(){
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                int finalI = i;
+                int finalJ = j;
+                cells[i][j].getNatures().forEach(map->{
+                    map.forEach((k,v)->{
+                        v.forEach(n->{
+                            if(n instanceof Animals animals){
+                                Direction accessDirection = getRandomDirection(cells[finalI][finalJ].getDirections());
+                                animals.move(accessDirection, worldConfigurator.getPosition());
+                            }
+                        });
+                    });
+                });
+            }
+        }
+        movableToNewCell();
+    }
+
+    private void movableToNewCell(){
+        //todo need write method
+    }
+
+    public static Direction getRandomDirection(Set<Direction> directions) {
+        if (directions == null || directions.isEmpty()) {
+            throw new IllegalArgumentException("Set не может быть пустым или null");
+        }
+
+        Random random = new Random();
+        int skipCount = random.nextInt(directions.size());
+
+        Iterator<Direction> iterator = directions.iterator();
+        Direction selectedDirection = null;
+
+        // Пропускаем случайное количество элементов
+        for (int i = 0; i <= skipCount; i++) {
+            selectedDirection = iterator.next();
+        }
+
+        return selectedDirection;
     }
 }

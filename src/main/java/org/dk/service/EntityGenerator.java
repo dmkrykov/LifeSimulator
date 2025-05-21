@@ -37,7 +37,7 @@ public class EntityGenerator {
     private void entityConfigurator(String entityType, Entity entity, Map<String, List<Natures>> map, Supplier<? extends Natures> natureSupplier) {
         Map<String, Integer> distributed = distributeUniformly(worldLoader.getSizeX(), worldLoader.getSizeY(), entity.getCount());
         int count = distributed.size();
-//todo исправить генерацию с учетом групп, объектов создается меньше чем задано, при этом количество в группе не считается
+//todo сделать генерацию когда группа false
         List<Natures> natures = IntStream
                 .range(0, count)
                 .mapToObj(i -> {
@@ -45,15 +45,15 @@ public class EntityGenerator {
                     if(!distributed.isEmpty()){
                         String randomKey = distributed.keySet().iterator().next();
                         String[] stPosition = randomKey.split(",");
-                        distributed.remove(randomKey);
-                        nature.setStartPosition(new Position(Integer.parseInt(stPosition[0]),Integer.parseInt(stPosition[1])));
+
+                        nature.setCurrentPosition(new Position(Integer.parseInt(stPosition[0]),Integer.parseInt(stPosition[1])));
                         if(nature.isGroup()) {
-                            //todo не присваивается значение, группы пока не работают
                             Integer value = distributed.get(randomKey);
                             nature.setCountInFlock(value);
                         }else{
                             nature.setCountInFlock(0);
                         }
+                        distributed.remove(randomKey);
                     }
                     return nature;
                 })
