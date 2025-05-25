@@ -11,9 +11,9 @@ import java.util.Set;
 public class Cell implements Runnable{
     private Terrain terrain;
     private Set<Direction> directions;
-    private Set<Map<String, List<Natures>>> natures;
+    private Map<String, List<Natures>> natures;
 
-    public Cell(Terrain terrain, Set<Direction> directions, Set<Map<String, List<Natures>>> natures) {
+    public Cell(Terrain terrain, Set<Direction> directions, Map<String, List<Natures>> natures) {
         this.terrain = terrain;
         this.directions = directions;
         this.natures = natures;

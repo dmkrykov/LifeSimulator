@@ -29,7 +29,7 @@ public class WorldMap {
     private void initialize() {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
-                Set<Map<String, List<Natures>>> natures = new HashSet<>();
+                Map<String, List<Natures>> natures = new HashMap<>();
                 int finalI = i;
                 int finalJ = j;
                 worldConfigurator.getNaturesMap().forEach((k, v) -> {
@@ -40,9 +40,7 @@ public class WorldMap {
                         }
                     });
                     if (!temp.isEmpty()) {
-                        Map<String, List<Natures>> mapToAdd = new HashMap<>();
-                        mapToAdd.put(k, temp);
-                        natures.add(mapToAdd);
+                        natures.put(k, temp);
                     }
                 });
                 cells[i][j] = new Cell(getAvailableTerrain(), getAvailableDirections(i, j), natures);
@@ -85,19 +83,18 @@ public class WorldMap {
         return weightedTerrains.get(rand.nextInt(weightedTerrains.size()));
     }
 
-    public void setMove(){
+    public void setMove() {
+        System.out.println("Setting move");
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
                 int finalI = i;
                 int finalJ = j;
-                cells[i][j].getNatures().forEach(map->{
-                    map.forEach((k,v)->{
-                        v.forEach(n->{
-                            if(n instanceof Animals animals){
-                                Direction accessDirection = getRandomDirection(cells[finalI][finalJ].getDirections());
-                                animals.move(accessDirection, worldConfigurator.getPosition());
-                            }
-                        });
+                cells[i][j].getNatures().forEach((k, v) -> {
+                    v.forEach(n -> {
+                        if (n instanceof Animals animals) {
+                            Direction accessDirection = getRandomDirection(cells[finalI][finalJ].getDirections());
+                            animals.move(accessDirection, worldConfigurator.getPosition());
+                        }
                     });
                 });
             }
@@ -105,8 +102,60 @@ public class WorldMap {
         movableToNewCell();
     }
 
-    private void movableToNewCell(){
+    private void movableToNewCell() {
         //todo need write method
+        System.out.println("movableToNewCell");
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                int finalI = i;
+                int finalJ = j;
+                cells[i][j].getNatures().forEach((k, v) -> {
+                    Iterator<Natures> iterator = v.iterator();
+                    while (iterator.hasNext()) {
+                        Natures n = iterator.next(); // Обязательно вызываем next() перед remove()
+                        if (n instanceof Animals animals) {
+                            Position thisPosition = new Position(finalI, finalJ);
+                            if (!animals.getCurrentPosition().equals(thisPosition)) {
+                                Map<String, List<Natures>> otherNatures =
+                                        cells[animals.getCurrentPosition().getX()][animals.getCurrentPosition().getY()].getNatures();
+
+                                // Создаем копию ключей для безопасной итерации
+                                List<String> keys = new ArrayList<>(otherNatures.keySet());
+                                boolean wasTransferred = false;
+
+                                for (String k2 : keys) {
+                                    if (k.equals(k2)) {
+                                        otherNatures.get(k2).add(n);
+                                        iterator.remove(); // OK: next() уже вызван
+                                        wasTransferred = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!wasTransferred) {
+                                    List<Natures> newNatures = new ArrayList<>();
+                                    newNatures.add(n);
+                                    otherNatures.put(k, newNatures);
+                                    iterator.remove(); // OK: next() уже вызван
+                                }
+                            }
+                        }
+                    }
+                });
+                deleteEmpty(i, j);
+            }
+        }
+    }
+
+    private void deleteEmpty(int x, int y) {
+        List<String> forDelete = new ArrayList<>();
+        cells[x][y].getNatures().forEach((k, v) -> {
+            if (v.size() == 0)
+                forDelete.add(k);
+        });
+        if (!forDelete.isEmpty()) {
+            forDelete.forEach(k -> cells[x][y].getNatures().remove(k));
+        }
     }
 
     public static Direction getRandomDirection(Set<Direction> directions) {

@@ -1,6 +1,7 @@
 worldName: TerraInfinity
 sizeX: 10
 sizeY: 20
+entityTypes: ["predator", "herbivore", "plant"]
 entity:
   - name: WolfGray
     icon: 🐺

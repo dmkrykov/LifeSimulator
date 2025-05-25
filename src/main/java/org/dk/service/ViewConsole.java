@@ -25,23 +25,20 @@ public class ViewConsole implements View<String> {
         for (Cell[] row : cells) {
             for (Cell cell : row) {
                 synchronized (cell) {
-                    cell.getNatures().forEach((map) -> {
-                        map.forEach((k, v) -> {
-                            v.forEach(n -> {
-                                if (countNatures.containsKey(n.getIcon())) {
-                                    Integer current = countNatures.get(n.getIcon());
-                                    if (n.isGroup()) {
-                                        current += n.getCountInFlock();
-                                    }else{
-                                        current ++;
-                                    }
-                                    countNatures.put(n.getIcon(), current);
+                    cell.getNatures().forEach((k, v) -> {
+                        v.forEach(n -> {
+                            if (countNatures.containsKey(n.getIcon())) {
+                                Integer current = countNatures.get(n.getIcon());
+                                if (n.isGroup()) {
+                                    current += n.getCountInFlock();
                                 } else {
-                                    countNatures.put(n.getIcon(), n.isGroup() ? n.getCountInFlock() : Integer.valueOf(1));
+                                    current++;
                                 }
-                            });
+                                countNatures.put(n.getIcon(), current);
+                            } else {
+                                countNatures.put(n.getIcon(), n.isGroup() ? n.getCountInFlock() : Integer.valueOf(1));
+                            }
                         });
-
                     });
                 }
             }
@@ -51,22 +48,24 @@ public class ViewConsole implements View<String> {
     private String drawCell(Cell[][] cells) {
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {
-                if(cells[i][j].getNatures().isEmpty()){
+                if (cells[i][j].getNatures().isEmpty()) {
                     sbRows.append("*").append("|");
                 }
-                cells[i][j].getNatures().forEach((map) -> {
-                    worldMap.getWorldConfigurator().getNaturesMap().forEach((k, v) -> {
-                        if(map.containsKey(k)){
-                            sbRows.append(k.substring(0,1).toUpperCase());
-                            sbRows.append(k.substring(1,2).toLowerCase());
-                        }
-                    });
+
+                cells[i][j].getNatures().forEach((k, v) -> {
+                    if (!v.isEmpty()) {
+                        sbRows.append(v.getFirst().getIcon());
+                    }
                 });
+                int size = cells[i][j].getNatures().size();
+                int sizeType = worldMap.getWorldConfigurator().getWorldLoader().getEntityTypes().size();
+                if (size < sizeType) {
+                    sbRows.append("* ".repeat(sizeType-size));
+                }
                 sbRows.append("|");
             }
             sbRows.append("\n");
         }
-
         return "";
     }
 
