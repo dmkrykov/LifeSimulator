@@ -5,7 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.dk.action.LivingEntity;
 import org.dk.environment.Position;
+import org.dk.loaders.CanEat;
 import org.dk.loaders.Entity;
+import org.dk.nature.Natures;
+
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -14,49 +18,35 @@ public class PredatorDefault extends Predators{
     public PredatorDefault(Entity entity) {
         name = entity.getName();
         age = (int) ((Math.random() * (entity.getAge()[1] - entity.getAge()[0])) + entity.getAge()[0]);
+        maxAge = entity.getMaxAge();
         icon = entity.getIcon();
         group = entity.isGroup();
         energy = entity.getEnergy();
         stepByStep = entity.getStepByStep();
+        entityType = entity.getEntityType();
+        canEat = entity.getCanEat();
+        maxFood = entity.getMaxFood();
+        weight = entity.getWeight();
     }
+
 
     @Override
-    public void makeSound() {
-
+    public void feed() {
+        super.live();
     }
 
-    @Override
-    public void feed(LivingEntity food) {
-
-    }
-
-    @Override
-    public double getEnergy() {
-        return energy;
-    }
 
     @Override
     public void live() {
-        System.out.println("I'm living!");
+        super.live();
     }
 
     @Override
-    public void setPosition(Position position) {
-        this.position = position;
-    }
+    public Natures reproduce() {
 
-    @Override
-    public LivingEntity reproduce() {
+
         return null;
     }
 
-    @Override
-    public Position getPosition() {
-        return null;
-    }
 
-    @Override
-    public void run() {
-
-    }
 }

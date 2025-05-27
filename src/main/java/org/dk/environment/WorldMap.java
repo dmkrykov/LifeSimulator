@@ -20,7 +20,6 @@ public class WorldMap {
         this.worldConfigurator = worldConfigurator;
         cells = new Cell[worldConfigurator.getPosition().getX()][worldConfigurator.getPosition().getY()];
         initialize();
-
     }
 
     /**
@@ -103,7 +102,6 @@ public class WorldMap {
     }
 
     private void movableToNewCell() {
-        //todo need write method
         System.out.println("movableToNewCell");
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length; j++) {

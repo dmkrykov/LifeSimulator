@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.dk.action.Feedable;
+import org.dk.action.LivingEntity;
 import org.dk.action.Movable;
 import org.dk.environment.Direction;
 import org.dk.environment.Position;
@@ -17,6 +18,10 @@ import java.util.Random;
 @ToString(callSuper = true)
 public abstract class Animals extends Natures implements Feedable, Movable {
     protected Position position;
+    protected int stepByStep;
+    protected float maxFood;
+    protected float weight;
+
 
     @Override
     public Position move(Direction direction, Position mapSize){
@@ -46,8 +51,4 @@ public abstract class Animals extends Natures implements Feedable, Movable {
         currentPosition = new Position(newX, newY);
         return currentPosition;
     }
-
-    // Абстрактные методы, которые должны быть реализованы в подклассах
-    public abstract void makeSound();
-
 }

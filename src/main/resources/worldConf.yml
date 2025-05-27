@@ -10,6 +10,7 @@ entity:
     count: 50
     maxCountInMap: 150
     age: [1,10]
+    maxAge: 60
     stepByStep: 3
     maxFood: 8
     weight: 50
@@ -26,6 +27,7 @@ entity:
     count: 50
     maxCountInMap: 30
     age: [1,8]
+    maxAge: 30
     stepByStep: 3
     maxFood: 8
     weight: 50
@@ -40,6 +42,7 @@ entity:
     count: 100
     maxCountInMap: 500
     age: [ 1,5 ]
+    maxAge: 15
     stepByStep: 2
     maxFood: 0.45
     weight: 2
@@ -54,6 +57,7 @@ entity:
     count: 120
     maxCountInMap: 42
     age: [1,500]
+    maxAge: 2500
     maxTypeCell: 30
     energy: 100
     canEat:
@@ -66,6 +70,7 @@ entity:
     count: 1000
     maxCountInMap: 1000
     age: [ 1,10 ]
+    maxAge: 42
     maxTypeCell: 30
     energy: 100
     canEat:

@@ -37,7 +37,7 @@ public class EntityGenerator {
     private void entityConfigurator(String entityType, Entity entity, Map<String, List<Natures>> map, Supplier<? extends Natures> natureSupplier) {
         Map<String, Integer> distributed = distributeUniformly(worldLoader.getSizeX(), worldLoader.getSizeY(), entity.getCount());
         int count = distributed.size();
-//todo сделать генерацию когда группа false
+        //todo сделать генерацию когда группа false
         List<Natures> natures = IntStream
                 .range(0, count)
                 .mapToObj(i -> {

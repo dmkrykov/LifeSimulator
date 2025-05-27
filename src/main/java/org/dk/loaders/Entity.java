@@ -10,6 +10,7 @@ public class Entity {
 	private String entityType;
 	private int maxCountInMap;
 	private int[] age;
+	private int maxAge;
 	private int count;
 	private String icon;
 	private float weight;

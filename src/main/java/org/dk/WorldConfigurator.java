@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import lombok.Getter;
-import org.dk.action.WorldSim;
 import org.dk.environment.Position;
 import org.dk.exception.LoadResource;
 import org.dk.loaders.WorldLoader;
@@ -19,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Getter
-public class WorldConfigurator implements WorldSim {
+public class WorldConfigurator {
     protected final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
     protected final String name;
     protected final WorldLoader worldLoader;

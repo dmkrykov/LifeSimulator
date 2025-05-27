@@ -15,16 +15,6 @@ public abstract class Plants extends Natures {
     protected double size;
 
 
-    @Override
-    public Position getPosition() {
-        return position;
-    }
-
-    @Override
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
     // Абстрактные методы для растений
     public abstract void photosynthesize();
 }
