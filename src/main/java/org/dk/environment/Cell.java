@@ -4,13 +4,13 @@ import lombok.Data;
 import org.dk.action.Feedable;
 import org.dk.action.LivingEntity;
 import org.dk.nature.Natures;
+import org.dk.nature.animal.Animals;
+import org.dk.nature.animal.Predators;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Data
-public class Cell implements Feedable, LivingEntity {
+public class Cell implements LivingEntity {
 	private Terrain terrain;
 	private Set<Direction> directions;
 	private Map<String, List<Natures>> natures;
@@ -21,10 +21,11 @@ public class Cell implements Feedable, LivingEntity {
 		this.natures = natures;
 	}
 
-	@Override
 	public void feed() {
 		natures.forEach((k, v) -> {
-			v.forEach(Natures::feed);
+			for (Natures n : v) {
+				n.feed(natures);
+			}
 		});
 	}
 

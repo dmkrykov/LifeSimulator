@@ -10,12 +10,13 @@ import org.dk.environment.Position;
 import org.dk.loaders.CanEat;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Natures implements LivingEntity, Reproducible, Feedable {
+public abstract class Natures implements LivingEntity, Reproducible, Feedable<Map<String, List<Natures>>> {
 	protected String name;
 	protected String icon;
 	protected int age;
@@ -32,13 +33,20 @@ public abstract class Natures implements LivingEntity, Reproducible, Feedable {
 	public void live() {
 		if (age < maxAge){
 			age++;
+//			System.out.println(name+" live "+ age);
 		}else{
 			isDie = true;
 		}
 	}
 
-	@Override
-	public void feed() {
+//	@Override
+//	public void feed(Map<String, List<Natures>> entity) {
+//
+//	}
 
+
+	@Override
+	public Natures reproduce() {
+		return null;
 	}
 }

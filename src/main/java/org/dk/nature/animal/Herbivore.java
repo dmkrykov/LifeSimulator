@@ -23,11 +23,6 @@ public abstract class Herbivore extends Animals{
 
 
     @Override
-    public void feed() {
-
-    }
-
-    @Override
     public Natures reproduce() {
         return null;
     }

@@ -156,6 +156,26 @@ public class WorldMap {
         }
     }
 
+    public void setLive(){
+        System.out.println("setLive");
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j].getNatures().forEach((k, v) -> {
+                    v.forEach(Natures::live);
+                });
+            }
+        }
+    }
+
+    public void setFeed(){
+        System.out.println("setFeed");
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                cells[i][j].feed();
+            }
+        }
+    }
+
     public static Direction getRandomDirection(Set<Direction> directions) {
         if (directions == null || directions.isEmpty()) {
             throw new IllegalArgumentException("Set не может быть пустым или null");

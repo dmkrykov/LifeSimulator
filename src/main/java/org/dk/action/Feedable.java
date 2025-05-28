@@ -1,11 +1,8 @@
 package org.dk.action;
 
-import org.dk.loaders.CanEat;
-
-import java.util.List;
 
 // Интерфейс для сущностей, которые могут питаться
-public interface Feedable {
-    void feed();
+public interface Feedable<T> {
+    void feed(T entity);
 
 }

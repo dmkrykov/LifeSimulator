@@ -16,7 +16,7 @@ import java.util.Random;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(callSuper = true)
-public abstract class Animals extends Natures implements Feedable, Movable {
+public abstract class Animals extends Natures implements Movable {
     protected Position position;
     protected int stepByStep;
     protected float maxFood;

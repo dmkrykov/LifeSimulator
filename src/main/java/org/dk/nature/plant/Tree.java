@@ -6,6 +6,9 @@ import org.dk.action.LivingEntity;
 import org.dk.loaders.Entity;
 import org.dk.nature.Natures;
 
+import java.util.List;
+import java.util.Map;
+
 
 @AllArgsConstructor
 @ToString(callSuper = true)
@@ -35,4 +38,8 @@ public class Tree extends Plants{
         return null;
     }
 
+    @Override
+    public void feed(Map<String, List<Natures>> entity) {
+        System.out.println("plants");
+    }
 }

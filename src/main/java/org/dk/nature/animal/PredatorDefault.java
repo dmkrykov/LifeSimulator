@@ -1,15 +1,13 @@
 package org.dk.nature.animal;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.dk.action.LivingEntity;
-import org.dk.environment.Position;
-import org.dk.loaders.CanEat;
 import org.dk.loaders.Entity;
 import org.dk.nature.Natures;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 @AllArgsConstructor
@@ -30,9 +28,20 @@ public class PredatorDefault extends Predators{
     }
 
 
-    @Override
-    public void feed() {
-        super.live();
+//    @Override
+    public void feed(Map<String, List<Natures>> natures) {
+
+        natures.forEach((k, v) -> {
+            v.forEach(n ->{
+                if (!n.getName().equals(name)) {
+                    System.out.println("PredatorDefault " + name + " entyty to mayby eat " + n.getName());
+                }
+            });
+        });
+//        canEat.forEach(n ->{
+//            String animal = n.getAnimal();
+//            int value = n.getValue();
+//        });
     }
 
 
@@ -43,10 +52,6 @@ public class PredatorDefault extends Predators{
 
     @Override
     public Natures reproduce() {
-
-
         return null;
     }
-
-
 }

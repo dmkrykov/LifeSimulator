@@ -3,6 +3,10 @@ package org.dk.nature.animal;
 import lombok.AllArgsConstructor;
 import lombok.ToString;
 import org.dk.loaders.Entity;
+import org.dk.nature.Natures;
+
+import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @ToString(callSuper = true)
@@ -28,7 +32,7 @@ public class HerbivoreDefault extends Herbivore {
     }
 
     @Override
-    public void feed() {
-        super.feed();
+    public void feed(Map<String, List<Natures>> entity) {
+        System.out.println("HerbivoreDefault feed " + name);
     }
 }

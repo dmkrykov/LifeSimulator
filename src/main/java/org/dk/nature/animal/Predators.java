@@ -1,6 +1,7 @@
 package org.dk.nature.animal;
 
 import lombok.*;
+import org.dk.nature.Natures;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -9,8 +10,7 @@ import lombok.*;
 public abstract class Predators extends Animals {
 
     @Override
-    public void live() {
-        System.out.println("I'm Predators!");
+    public Natures reproduce() {
+        return null;
     }
-
 }

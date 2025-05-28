@@ -20,6 +20,9 @@ public class Main {
 
         executor.scheduleAtFixedRate(() -> {
              // Затем выводим
+            worldMap.setLive();
+            worldMap.setFeed();
+            System.out.println("NEXT");
             worldMap.setMove();  // Сначала обновляем карту
             View view = new ViewConsole(worldMap);
             System.out.println(view.getView());
