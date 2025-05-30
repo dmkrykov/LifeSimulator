@@ -33,6 +33,6 @@ public class HerbivoreDefault extends Herbivore {
 
     @Override
     public void feed(Map<String, List<Natures>> entity) {
-        System.out.println("HerbivoreDefault feed " + name);
+//        System.out.println("HerbivoreDefault feed " + name);
     }
 }

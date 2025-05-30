@@ -40,6 +40,6 @@ public class Tree extends Plants{
 
     @Override
     public void feed(Map<String, List<Natures>> entity) {
-        System.out.println("plants");
+//        System.out.println("plants");
     }
 }

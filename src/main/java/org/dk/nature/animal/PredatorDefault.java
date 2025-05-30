@@ -5,6 +5,7 @@ import lombok.ToString;
 import org.dk.loaders.Entity;
 import org.dk.nature.Natures;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
@@ -28,20 +29,29 @@ public class PredatorDefault extends Predators{
     }
 
 
-//    @Override
+    @Override
     public void feed(Map<String, List<Natures>> natures) {
+        // получаем список кого есть в ячейки из тех кого можем есть
+        List<String> victim = getVictim(natures);
+        //todo дописать
 
+
+    }
+
+    private List<String> getVictim(Map<String, List<Natures>> natures){
+        List<String> toEat = new ArrayList<>();
         natures.forEach((k, v) -> {
             v.forEach(n ->{
-                if (!n.getName().equals(name)) {
-                    System.out.println("PredatorDefault " + name + " entyty to mayby eat " + n.getName());
-                }
+                String nameAnimal = n.getName();
+                canEat.forEach(animal->{
+                    if (animal.getAnimal().equalsIgnoreCase(nameAnimal)) {
+                        toEat.add(nameAnimal);
+                        System.out.println(toEat);
+                    }
+                });
             });
         });
-//        canEat.forEach(n ->{
-//            String animal = n.getAnimal();
-//            int value = n.getValue();
-//        });
+        return toEat;
     }
 
 
